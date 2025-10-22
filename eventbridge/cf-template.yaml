@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: CloudFormation template for EventBridge Rules
+Resources:
+  Rule1bc16011:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: wiki-mcp-bridge-telegram-chaining
+      EventPattern: '{"source":["lambda.telegram.listener"]}'
+      State: ENABLED
+      Description: ''
+      EventBusName: default
+      Targets:
+        - Id: Ida7593c57-f634-48b3-ab79-3d66dcd9abb5
+          Arn:
+            Fn::Sub: >-
+              arn:${AWS::Partition}:lambda:${AWS::Region}:${AWS::AccountId}:function:wiki-aws-mcp-bridge-telegram-responder
+          RoleArn: >-
+            arn:aws:iam::${AWS::AccountId}:role/service-role/wiki-eventbridge-execution-role
+  Rulecca8a6e8:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: wiki-mcp-bridge-whatsapp-chaining
+      EventPattern: '{"source":["lambda.whatsapp.listener"]}'
+      State: ENABLED
+      Description: ''
+      EventBusName: default
+      Targets:
+        - Id: Ide03ff987-98e5-4fb9-9a31-282087df822d
+          Arn:
+            Fn::Sub: >-
+              arn:${AWS::Partition}:lambda:${AWS::Region}:${AWS::AccountId}:function:wiki-aws-mcp-bridge-whatsapp-responder
+          RoleArn: >-
+            arn:aws:iam::${AWS::AccountId}:role/service-role/wiki-eventbridge-execution-role
+Parameters: {}

@@ -1,0 +1,13 @@
+services:
+  aws-api-mcp:
+    image: public.ecr.aws/awslabs-mcp/awslabs/aws-api-mcp-server:latest
+    environment:
+      AWS_REGION: ap-southeast-1
+      AWS_API_MCP_TRANSPORT: "streamable-http"
+      AWS_API_MCP_HOST: 0.0.0.0
+      AUTH_TYPE: "no-auth"
+    volumes:
+      - ~/.aws:/app/.aws
+    ports:
+      - "80:8000"
+    restart: "unless-stopped"
