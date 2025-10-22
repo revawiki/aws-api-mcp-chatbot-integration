@@ -55,9 +55,9 @@ These instructions help you recreate the sandbox environment, deploy the AWS res
 * [Amazon EventBridge](https://aws.amazon.com/eventbridge/) for message fan-out between listeners and responders.
 * [Amazon DynamoDB](https://aws.amazon.com/dynamodb/) for session and state persistence.
 * [Amazon Bedrock](https://aws.amazon.com/bedrock/) for generative responses.
-* [Amazon EC2](https://aws.amazon.com/ec2/) hosting the MCP server.
+* [Amazon EC2](https://aws.amazon.com/ec2/) for hosting the MCP server.
 * [AWS API MCP Server](https://awslabs.github.io/mcp/servers/aws-api-mcp-server) for FM to communicate with AWS infrastructure.
-* [Docker](https://www.docker.com) for running the MCP server locally.
+* [Docker & Docker-Compose](https://www.docker.com) for running the MCP server.
 
 ## Credits
 
