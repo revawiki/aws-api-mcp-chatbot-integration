@@ -1,11 +1,11 @@
-# AWS API MCP Chat Integration
+# AWS API MCP Chatbot Integration
 
-This repository contains a reference implementation for bridging AWS API MCP Server with chat channels such as Telegram and WhatsApp. This is also the prototype that been used as demonstration in my session titled "Chatting with your AWS Infrastructure on-the-go: The Power of AWS API MCP Server" for AWS Community Day Indonesia 2025.
+This repository contains a reference implementation for bridging AWS API MCP Server with chat channels such as Telegram and WhatsApp. This is also the prototype that been used as demonstration in my session titled *"Chatting with your AWS Infrastructure on-the-go: The Power of AWS API MCP Server"* for AWS Community Day Indonesia 2025.
 
 ![Architecture Diagram](wiki-aws-api-mcp-chat-integration-diagram.png)
 
 **⚠️ DISCLAIMER ⚠️**<br>
-This solution means to demonstrate initial capabilities and **not intended for production workload**. Configurations such as permissive IAM policies, publicly accessible Lambda Function URLs, and simplified authentication mechanisms, are intentionally relaxed for demonstration purposes and **must be hardened before any production deployment**.
+This solution means to demonstrate initial capabilities and **not intended for production workload**. Configurations such as permissive IAM policies, publicly accessible endpoint, and simplified authentication mechanisms, are intentionally relaxed for demonstration purposes and **must be hardened before any production deployment**.
 
 Please also remember that **AI can make mistakes!** <br>
 
