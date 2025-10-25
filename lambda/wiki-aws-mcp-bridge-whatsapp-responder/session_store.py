@@ -8,8 +8,8 @@ from botocore.config import Config
 from botocore.exceptions import BotoCoreError, ClientError
 
 SESSION_TABLE_NAME = os.environ.get("SESSION_TABLE_NAME")
-MAX_SESSION_MESSAGES = 10
-SESSION_TTL_SECONDS = 300
+MAX_SESSION_MESSAGES = 5
+SESSION_TTL_SECONDS = 600
 SESSION_TTL_ATTRIBUTE = "expireAt"
 
 _dynamodb = None

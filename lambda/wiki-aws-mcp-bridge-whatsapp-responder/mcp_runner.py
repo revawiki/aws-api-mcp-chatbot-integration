@@ -5,12 +5,12 @@ from bedrock import bedrock_client, bedrock_converse
 from helper import build_stream_url, build_prompt
 from session_store import load_session, save_session
 
-MAX_TOOL_TEXT_CHARS = 2000
+MAX_TOOL_TEXT_CHARS = 10000
 TIME_LIMIT_SECS = 60
 
 def strip_thinking_tags(text: str) -> str:
-    text = re.sub(r"</?thinking>", "", text)
-    return text.strip()
+    text = re.sub(r"<thinking>.*?</thinking>", "", text, flags=re.DOTALL).strip()
+    return text
 
 async def convo_session(event):
     print("Starting phase")
@@ -153,4 +153,22 @@ async def convo_session(event):
             pass
         print("Conversation completed")
         if conversation_id and messages:
-            save_session(conversation_id, messages)
+            cleaned_messages = []
+
+            for msg in messages:
+                role = msg.get("role")
+                content = msg.get("content", [])
+                cleaned_content = []
+
+                for block in content:
+                    if "text" in block:
+                        text = strip_thinking_tags(block["text"])
+                        if text.strip():
+                            cleaned_content.append({"text": text.strip()})
+                    elif "toolUse" in block or "toolResult" in block:
+                        continue
+
+                if cleaned_content:
+                    cleaned_messages.append({"role": role, "content": cleaned_content})
+
+            save_session(conversation_id, cleaned_messages)
